@@ -46,7 +46,7 @@ class PokemonContainer extends Component{
     return(
       <div className="pokemon-display">
         <h2>
-          Pokemons
+          Pokemon
         </h2>
         <PokemonSelector
           pokemonData={this.state.pokemons}

@@ -10,3 +10,7 @@
 .pokemon-display h2 {
   padding-top: 20px;
 }
+
+select {
+  font-size: 1rem;
+}
