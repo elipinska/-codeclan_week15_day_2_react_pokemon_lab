@@ -4,9 +4,13 @@ const PokemonDetail = (props) => {
 
   if (!props.pokemonToDisplay) return null
 
+  const pokemonName = props.pokemonToDisplay.name
+  const capitalizedName = pokemonName.charAt(0).toUpperCase() + pokemonName.substr(1);
+
+
   return (
     <div>
-      <h3>{props.pokemonToDisplay.name}</h3>
+      <h3>{capitalizedName}</h3>
       <img src={props.imageToDisplay}/>
     </div>
   )

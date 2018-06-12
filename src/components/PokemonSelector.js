@@ -1,8 +1,11 @@
 import React from 'react'
 
 const PokemonSelector = (props) => {
+
   const options = props.pokemonData.map((pokemon, index) => {
-    return <option value={index} key={index}>{pokemon.name}</option>
+    const pokemonName = pokemon.name
+    const capitalizedName = pokemonName.charAt(0).toUpperCase() + pokemonName.substr(1);
+    return <option value={index} key={index}>{capitalizedName}</option>
   })
 
   function handleChange(event){
