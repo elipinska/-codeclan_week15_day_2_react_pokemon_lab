@@ -7,9 +7,11 @@ class PokemonContainer extends Component{
     super(props)
     this.state = {
       pokemons: [],
-      currentPokemon: null
+      currentPokemon: null,
+      currentPokemonUrl: null
     }
     this.handlePokemonSelected = this.handlePokemonSelected.bind(this)
+    this.getPokemonImage = this.getPokemonImage.bind(this)
   }
 
   componentDidMount(){
@@ -20,12 +22,27 @@ class PokemonContainer extends Component{
       .catch(error => console.log('Error', error))
   }
 
+  getPokemonImage(pokemon) {
+
+    const url = pokemon.url
+    fetch(url)
+      .then(res => res.json())
+      .then(singlePokemonData => this.setState({pokemonImageUrl: singlePokemonData.sprites.front_default}))
+      .catch(error => console.log('Error', error))
+
+  }
+
   handlePokemonSelected(index){
     const selectedPokemon = this.state.pokemons[index]
     this.setState({currentPokemon: selectedPokemon})
+
+    if (selectedPokemon) {
+      this.getPokemonImage(selectedPokemon)
+    }
   }
 
   render(){
+    console.log(this.state.pokemonImageUrl);
     return(
       <div>
         <h2>
@@ -35,7 +52,7 @@ class PokemonContainer extends Component{
           pokemonData={this.state.pokemons}
           onPokemonSelected={this.handlePokemonSelected}
         />
-        <PokemonDetail pokemonToDisplay={this.state.currentPokemon}/>
+        <PokemonDetail pokemonToDisplay={this.state.currentPokemon} imageToDisplay={this.state.pokemonImageUrl}/>
       </div>
     )
   }

@@ -7,6 +7,7 @@ const PokemonDetail = (props) => {
   return (
     <div>
       <h3>{props.pokemonToDisplay.name}</h3>
+      <img src={props.imageToDisplay}/>
     </div>
   )
 
