@@ -44,7 +44,7 @@ class PokemonContainer extends Component{
   render(){
     console.log(this.state.pokemonImageUrl);
     return(
-      <div>
+      <div className="pokemon-display">
         <h2>
           Pokemons
         </h2>
